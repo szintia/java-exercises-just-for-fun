@@ -14,7 +14,7 @@ public class Exercise_1_3 {
 		System.out.println(isPermutation("abc", "bcd"));
 		System.out.println(isPermutation("omg", "omg"));
 		System.out.println(isAnagram("efg", "gfeh"));
-		System.out.println(isAnagram("blablabla", "blablabla"));
+		System.out.println(isAnagram("blablAbla", "blablablA"));
 	}
 	
 	//Efficient way
@@ -38,10 +38,10 @@ public class Exercise_1_3 {
 		return true;
 	}
 	
-	//Clearer way
+	//Clearer way + it is not case sensitive
 	private static boolean isAnagram(String str1, String str2) {
 		isTheSameCharacterCount(str1, str2);
-		return sort(str1).equals(sort(str2));
+		return sort(str1).equalsIgnoreCase(sort(str2));
 	}
 
 	private static boolean isTheSameCharacterCount(String str1, String str2) {
