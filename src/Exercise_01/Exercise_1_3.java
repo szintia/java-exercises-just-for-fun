@@ -11,12 +11,16 @@ public class Exercise_1_3 {
 	 */
 
 	public static void main(String... args) {
-		
+		System.out.println(isPermutation("abc", "bcd"));
+		System.out.println(isPermutation("omg", "omg"));
+		System.out.println(isAnagram("efg", "gfeh"));
+		System.out.println(isAnagram("blablabla", "blablabla"));
 	}
 	
 	//Efficient way
 	// Are they ASCII or Unicode strings?
-	private static boolean isPermutation(String str1, String str2) {
+	// if not case sensitive : string.toLowerCase() 
+ 	private static boolean isPermutation(String str1, String str2) {
 		isTheSameCharacterCount(str1, str2);
 		
 		int[] values = new int[256];
