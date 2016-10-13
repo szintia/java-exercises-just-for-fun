@@ -13,8 +13,9 @@ public class Exercise_1_3 {
 	public static void main(String... args) {
 		System.out.println(isPermutation("abc", "bcd"));
 		System.out.println(isPermutation("omg", "omg"));
-		System.out.println(isAnagram("efg", "gfeh"));
-		System.out.println(isAnagram("blablAbla", "blablablA"));
+		System.out.println(isCaseSensitiveAnagram("efg", "gfe"));
+		System.out.println(isCaseSensitiveAnagram("blablAbla", "BlablablA"));
+		System.out.println(isCaseInsensitiveAnagram("blablAbla", "BlablAbla"));
 	}
 	
 	//Efficient way
@@ -39,9 +40,18 @@ public class Exercise_1_3 {
 	}
 	
 	//Clearer way + it is not case sensitive
-	private static boolean isAnagram(String str1, String str2) {
+ 	private static boolean isCaseInsensitiveAnagram(String str1, String str2) {
+ 		isTheSameCharacterCount(str1, str2);
+ 		
+ 		//equalsIgnoreCase is not a solution, because the sort is case sensitive
+ 		return CaseInsensitiveSort(str1).equals(CaseInsensitiveSort(str2));
+ 	}
+ 	
+ 	
+	private static boolean isCaseSensitiveAnagram(String str1, String str2) {
 		isTheSameCharacterCount(str1, str2);
-		return sort(str1).equalsIgnoreCase(sort(str2));
+		
+		return CaseSensitiveSort(str1).equals(CaseSensitiveSort(str2));
 	}
 
 	private static boolean isTheSameCharacterCount(String str1, String str2) {
@@ -51,9 +61,18 @@ public class Exercise_1_3 {
 		return true;
 	}
 
-	private static String sort(String str1) {
-		char[] characters = str1.toCharArray();
+	private static String CaseSensitiveSort(String str) {
+		char[] characters = str.toCharArray();
 		Arrays.sort(characters);
-		return new String(characters);
+		return Arrays.toString(characters);
+	}
+	
+	private static String CaseInsensitiveSort(String str) {
+		String lowerCaseString = str.toLowerCase();
+		System.out.println(lowerCaseString);
+		char[] characters = lowerCaseString.toCharArray();
+		Arrays.sort(characters);
+		
+		return Arrays.toString(characters);
 	}
 }
